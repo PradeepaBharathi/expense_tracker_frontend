@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const base_url = 'http://localhost:9000';
+const base_url = 'https://expense-tracker-backend-7mhb.onrender.com';
 
 
 const getToken = () => {
