@@ -1,0 +1,46 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 100vh;
+    margin-top: 30px;
+  }
+
+  .add-component{
+    background-color: whitesmoke;
+    height: 35rem;
+    padding: 10px;
+    width: 70rem;
+    border-radius: 5px;
+   display: flex;
+   justify-content: flex-start;
+   color:#42224a
+  }
+  .add-btn{
+    background-color: #42224a !important;
+  }
+
+  @media screen and (max-width:426px) and (min-width:320px) {
+ 
+    .add-component{
+        width: 15rem !important;
+        height: 30rem !important;
+       
+        margin-left: 50px !important;
+        margin-right: 0 !important;
+        
+    }
+
+    .add-title{
+        font-size: medium !important;
+    }
+  }
+  @media screen and (max-width:769px) and (min-width:427px)  {
+    .add-component{
+   
+     margin-top: 40px;
+     height: 30rem;
+    
+    }}

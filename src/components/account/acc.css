@@ -1,0 +1,47 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 100vh;
+    margin-top: 30px;
+}
+.acc-container{
+    background-color: whitesmoke;
+    height: 35rem;
+    padding: 10px;
+    width: 50rem;
+    border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 1rem;
+
+  }
+
+  .acc-details{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .logout-btn{
+    background-color: #42224a !important;
+  }
+
+  @media screen and (max-width:429px) and (min-width:320px) {
+    .acc-container{
+        width: 14rem !important;
+        height: 20rem !important;
+        margin-left: 55px;
+    }
+    
+  }
+  @media screen and (max-width:769px) and (min-width:430px) {
+    .acc-container{
+        width: 24rem !important;
+        height: 20rem !important;
+        margin-left: 55px;
+    }
+    
+  }

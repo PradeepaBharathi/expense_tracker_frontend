@@ -1,0 +1,58 @@
+*{
+    font-family: Poppins !important;
+   
+   }
+   
+   .toolbar {
+     background-color: white;
+     color: #42224a;
+   }
+   
+   .maincomponent{
+       background-color: whitesmoke;
+       height: 35rem;
+       padding: 10px;
+       border-radius: 5px;
+      display: flex;
+      
+   }
+   
+   .leftcomponent{
+       display: flex;
+       flex-direction: column;
+       align-items: flex-start;
+     
+       width: 50%;
+       gap:0.5rem
+   
+   }
+   .rightcomponent{
+   
+       width: 50%;
+   }
+   .head{
+       display: flex;
+       flex-direction: column;
+       
+     text-align:start;
+    font-weight:900 !important;
+    font-family: Poppins !important;
+   }
+   
+   .card-img{
+     background-color: #42224a !important;
+     display: flex;
+     height: 20rem;
+     justify-content: center;
+     align-items: center;
+     margin: 40px;
+     padding: 20px;
+   
+   }
+   
+   .pie-img{
+     height: 300px;
+   }
+   .card-txt{
+     color: white;
+   }
