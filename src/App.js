@@ -8,6 +8,8 @@ import Nav from './components/Nav/Navbar';
 import AddExpense from './components/add/AddExpense';
 import Charts from './components/charts/Charts';
 import Account from './components/account/Account';
+import Final from './components/final/Final';
+import Layout from './components/Layout/Layout';
 
 function App() {
   return (
@@ -15,18 +17,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login />} />
-          <Route path="/*" element={
-            <>
-              <Nav />
-              <Routes>
-                <Route path='home' element={<Home />} />
-                <Route path="addExpense" element={<AddExpense />} />
-                <Route path="transactions" element={<Transactions />} />
-                <Route path="charts" element={<Charts />} />
-                <Route path="account" element={<Account />} />
-              </Routes>
-            </>
-          } />
+          <Route path='/' element={<Layout />}>
+            <Route path='home' element={<Home />} />
+            <Route path='addExpense' element={<AddExpense />} />
+            <Route path='transactions' element={<Transactions />} />
+            <Route path='charts' element={<Charts />} />
+            <Route path='account' element={<Account />} />
+            <Route path='final' element={<Final />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 function Account() {
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user)
-    const nav = useNavigate()
+    const navigate = useNavigate()
     const handleLogout =()=>{
         localStorage.removeItem('user')
         localStorage.removeItem('token')
-        nav("/")
+        navigate("/")
     }
   return (
     <Box className='main'>
@@ -19,7 +19,7 @@ function Account() {
                     <Box className='acc-details'>
                         <Box>Name: {user.username}</Box>
                         <Box>Email: {user.email}</Box>
-                        <Box>Created At: {new Date(user.createdAt).toLocaleDateString()}</Box>
+                       
                        
                     </Box>
                 ) : (

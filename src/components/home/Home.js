@@ -77,34 +77,12 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-    boxSizing: 'border-box',
-    ...(open && {
-      ...openedMixin(theme),
-      '& .MuiDrawer-paper': openedMixin(theme),
-    }),
-    ...(!open && {
-      ...closedMixin(theme),
-      '& .MuiDrawer-paper': closedMixin(theme),
-    }),
-  }),
-);
+
 
 export default function Home() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const navigate = useNavigate()
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const navigate = useNavigate()
+ 
   function getDate() {
     const today = new Date();
     const months = [
@@ -120,13 +98,13 @@ export default function Home() {
   const [currentDate, setCurrentDate] = React.useState(getDate());
 
   const dispatch = useDispatch()
-  const{expenses} = useSelector((state)=>state.expenses)
+  const expenses = useSelector((state)=>state.expenses.dateExpenses)
 
   useEffect(()=>{
     dispatch(fetchExpenseByDate())
   },[])
 
-
+console.log(expenses)
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -169,7 +147,7 @@ export default function Home() {
         </Typography>
           </Box>
           <Box className='rightcomponent'>
-            <Typography > Todays Transactions</Typography>
+            <Typography > Today's Transactions</Typography>
               <Box className='t-list'>
                 {
                  Array.isArray(expenses)? expenses.map((val)=>{

@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 
-const base_url ='https://expense-tracker-backend-7mhb.onrender.com'
+const base_url ='http://localhost:9000'
 
 export const loginUser = createAsyncThunk(
   "user/login",
@@ -15,7 +15,7 @@ export const loginUser = createAsyncThunk(
       const response = await axios.post(`${base_url}/user/login`, credentials);
       console.log(response)
       localStorage.setItem('token', response.data.token)
-      localStorage.setItem('user',JSON.stringify(response.data.data))
+      localStorage.setItem("user",JSON.stringify(response.data.data))
       toast.success(response.data.data.message)
       return response.data;
     } catch (error) {
@@ -32,6 +32,8 @@ export const signupUser = createAsyncThunk(
     try {
       console.log(userData)
       const response = await axios.post(`${base_url}/user/register`, userData);
+      localStorage.setItem('token', response.data.token)
+      localStorage.setItem("user",JSON.stringify(response.data.user))
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -45,9 +47,13 @@ const userSlice = createSlice({
     loading: false,
     user: null,
     error: null,
-    addProjectStatus: 'idle', 
+    addUserStatus: 'idle', 
   },
-
+    reducers:{
+      resetAddUserStatus: (state) => {
+        state.addUserStatus = 'idle'; 
+    }
+    },
   extraReducers: (builder) => {
     builder
      
@@ -58,7 +64,7 @@ const userSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
-   
+        state.addUserStatus='succeeded'
         toast.success("Login Successful")
         
       })
@@ -75,6 +81,7 @@ const userSlice = createSlice({
       .addCase(signupUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+        state.addUserStatus='succeeded'
         toast.success("Signup successful!");
       })
       .addCase(signupUser.rejected, (state, action) => {

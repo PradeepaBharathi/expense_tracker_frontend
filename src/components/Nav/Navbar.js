@@ -165,7 +165,7 @@ export default function Nav() {
                       <InsertChartIcon onClick={()=> navigate("charts")}/>
                     </IconButton>
                   ) : (
-                    <PermIdentityIcon onClick={()=>navigate("/account")} />
+                    <PermIdentityIcon onClick={()=>navigate("account")} />
                   )}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />

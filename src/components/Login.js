@@ -18,7 +18,8 @@ function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { loading, error, user } = useSelector((state) => state.user);
+  const { user, addUserStatus } = useSelector((state) => state.user); // Correctly access state
+  console.log(addUserStatus);
   const toggleSignup = () => {
     account === "signup" ? toggleAccount("login") : toggleAccount("signup");
   };
@@ -33,13 +34,17 @@ const handleSignup = (e) => {
     let userData = { username, email, password,confirmPassword};
     dispatch(signupUser(userData))
 };
+console.log(user)
 
-useEffect(() => {
-  if (user) {
-  navigate("/home")
+useEffect(()=>{
+  if(addUserStatus=='succeeded'){
+   
+    setTimeout(()=>{
+      navigate("/home")
+      dispatch({ type: 'user/resetAddUserStatus' });
+    },1000)
   }
- 
-}, [user, error, navigate]);
+})
   return (
     <Box className="login-form">
       <ToastContainer/>
@@ -122,7 +127,7 @@ useEffect(() => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             name="confirmPassword"
             inputProps={{
-              type: "confirmpassword",
+              type: "password",
               className: "no-hover",
             }}
             label="confirmPassword"

@@ -22,7 +22,8 @@ export const fetchExpenseByDate = createAsyncThunk(
                   'x-auth-token': token 
                 }
               });
-              console.log(response.data.expenses);
+              // console.log(response)
+              // console.log(response.data.expenses);
               return response.data.expenses
         } catch (error) {
       return rejectWithValue(error.response.data);
@@ -82,6 +83,7 @@ const expenseSlice = createSlice({
         loading:false,
         expenses:[],
         allExpenses:[],
+        dateExpenses:[],
         error:null,
       addExpenseStatus: 'idle', 
         
@@ -99,7 +101,7 @@ const expenseSlice = createSlice({
         })
         .addCase(fetchExpenseByDate.fulfilled,(state,action)=>{
             state.loading= false;
-            state.expenses = action.payload
+            state.dateExpenses=action.payload
         })
         .addCase(fetchExpenseByDate.rejected,(state,action)=>{
             state.loading = false;
